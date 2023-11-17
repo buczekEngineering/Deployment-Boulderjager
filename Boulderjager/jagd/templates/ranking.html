@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for key, entry in rankings.items %}
+  {% with key|add:"_" as mode_gender %}
+
+        {% if key == 'u18_man' %}
+    <h2>u18 Jungs</h2>
+        {% elif key == 'u18_woman' %}
+    <h2>u18 Mädels</h2>
+        {% elif key == 'ue50_woman' %}
+    <h2>ü50 Frauen</h2>
+        {% elif key == 'ue50_man' %}
+    <h2>ü50 Männer</h2>
+        {% elif key == 'bj_woman' %}
+    <h2>boulderjäger Frauen</h2>
+        {% elif key == 'bj_man' %}
+    <h2>boulderjäger Männer</h2>
+  {% else %}
+    <h2>{{ key|title }} Ranking</h2>
+  {% endif %}
+    <ul style="list-style: none; padding: 0;">
+    {% for entry in entry %}
+        <li style="font-family: 'Josefin Sans', sans-serif; border-bottom: 1px solid #ccc; padding: 5px 0;">
+      {{ forloop.counter }}. {{ entry.user.first_name }} {{ entry.user.last_name }}                 Gesamt: {{ entry.points }}
+        </li>
+
+    {% endfor %}
+  </ul>
+  {% endwith %}
+{% endfor %}
+
+    <br />
+    <br />
+    <br />
+        <p style="font-family: 'Josefin Sans', sans-serif;"> <a href="{% url 'jagd:home' %}" class="button">Startseite</a></p>
+{% endblock %}

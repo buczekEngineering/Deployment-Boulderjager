@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Dein Ergebnis</h1>
+     <h3> Jäger/in: {{ username }}</h3>
+     <h2> Tops: {{ tops }} Zonen: {{ zones }}</h2>
+    {% if boulders %}
+
+
+        {% for boulder in boulders %}
+      <ul style="list-style: none; padding: 0;">
+        {% for field, value in boulder.get_boulder_fields_and_values.items %}
+                 <li style="font-family: 'Josefin Sans', sans-serif; border-bottom: 1px solid #ccc; padding: 5px 0;">
+                    {{ field }}:  {{ value }}   </li>
+            <br/>
+            <br/>
+        {% endfor %}
+      <br/>
+        <br/>
+
+
+    </ul>
+{% endfor %}
+    {% endif %}
+
+    <p><a href="{% url 'jagd:ranking_view' %}" class="button">Das Ranking</a></p>
+    <p><a href="{% url 'jagd:add_boulders_view' %}" class="button">Boulder hinzufügen</a></p>
+     <p><a href="{% url 'jagd:home' %}" class="button">Startseite</a></p>
+        <br/>
+        <br/>
+
+
+
+{% endblock %}

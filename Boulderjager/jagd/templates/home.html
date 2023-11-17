@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% load static %}
+     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+   <p><a href="{% url 'jagd:ranking_view' %}" class="button">Ranking überprüfen</a></p>
+        <img src="{% static 'images/jagd.png' %}" alt="" class="responsive-image">
+
+    {% if not user.is_authenticated %}
+    <p> <a href="{% url 'jagd:signup' %}" class="button">Registrieren</a></p>
+      <a href="{% url 'jagd:signin' %}" class="button" >Anmelden</a>
+    {% endif %}     </p>
+
+    {% if user.is_authenticated %}
+
+        <h1>Hallo {{username}}!</h1>
+        <p><a href="{% url 'jagd:add_boulders_view' %}" class="button">Boulder hinzufügen</a></p>
+        <p><a href="{% url 'jagd:view_boulder' %}" class="button">Ihr Ergebnis anzeigen</a></p>
+        <p><a href="{% url 'jagd:signout' %}" class="button">Abmelden</a></p>
+
+
+{% endif %}
+{% endblock %}

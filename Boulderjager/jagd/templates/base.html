@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BOULDERJÄGER</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap">
+
+      <style>
+           body {
+            background-color: #E0E0E0;
+            background-image: url('data:jagd.png');
+            margin: 0;
+               padding: 0;
+                font-family: 'Josefin Sans', sans-serif;
+               font-size: 3vw;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 3vw;
+
+        }
+          header {
+            text-align: center;
+        }
+        h1 {
+             color: darkslategray;
+             font-family: 'Josefin Sans', sans-serif;
+        }
+        footer {
+            text-align: center;
+        }
+        footer p {
+             font-family: 'Josefin Sans', sans-serif;
+        }
+         h2 {
+
+            font-family: 'Josefin Sans', sans-serif;
+            color: darkolivegreen;
+        }
+         h3 {
+
+            font-family: 'Josefin Sans', sans-serif;
+            color: darkolivegreen;
+        }
+         .button {
+              padding: 10px 20px;
+    margin: 5px;
+
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    background-color: darkolivegreen;
+    color: white;
+              font-family: 'Josefin Sans', sans-serif;
+             font-size: 2vw;
+}
+
+
+    .button:hover {
+        background-color: darkseagreen;
+    ;
+    }
+    .submit-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 2vw;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    background-color: darkgreen; /* Default button background color */
+    color: white; /* Default button text color */
+        font-family: 'Josefin Sans', sans-serif;
+}
+
+.submit-button:hover {
+    background-color: #2980b9;
+}
+.form-group {
+    margin-bottom: 15px; /* Adds space between form groups */
+}
+
+.form-group label {
+    display: block; /* Makes the label a block element */
+    margin-bottom: 5px; /* Adds space below the label */
+    font-weight: bold; /* Makes the label bold */
+    color: #333; /* Label text color */
+}
+
+.form-group input[type="email"].form-control {
+    width: 100%; /* Sets the input width to 100% */
+    padding: 8px; /* Adds padding inside the input field */
+    border: 1px solid #ccc; /* Adds a border around the input field */
+    border-radius: 5px; /* Adds rounded corners to the input field */
+    box-sizing: border-box; /* Includes padding and border in the width */
+}
+.boulder-cell {
+    font-family: 'Josefin Sans', sans-serif;
+    border-bottom: 1px solid #ccc;
+    padding: 5px 0;
+}
+.logo {
+    width: 100px;
+    height: auto;
+
+}
+.responsive-image {
+            max-width: 30%;
+            max-height: 40%;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+ {% include 'menu.html' %}
+    <header>
+        <h1>BOULDERJÄGER</h1>
+    </header>
+    <main>
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+
+
+    <footer>
+        <br />
+                <br />
+
+                <br />
+
+                <br />
+
+        <p>&copy; {{ year }} Schlüsselstelle Jungs Boulderhalle </p>
+    </footer>
+</body>
+</html>
