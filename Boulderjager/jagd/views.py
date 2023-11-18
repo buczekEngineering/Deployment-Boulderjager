@@ -117,24 +117,24 @@ def signup(request):
         pass2 = request.POST['pass2']
 
         if User.objects.filter(username=username):
-            messages.error(request, "Username already exist! Please try some other username.")
+            messages.error(request, "Der Benutzername existiert bereits! Bitte versuchen Sie es mit einem anderen Benutzernamen.")
             return render(request, "authentication/signup.html")
 
 
         if len(username) > 20:
-            messages.error(request, "Username must be under 20 charcters!!")
+            messages.error(request, "Der Benutzername muss weniger als 20 Zeichen lang sein!!")
             return render(request, "authentication/signup.html")
 
         if User.objects.filter(email=email).exists():
-            messages.error(request, "Email Already Registered!!")
+            messages.error(request, "E-Mail Bereits registriert!!")
             return render(request, "authentication/signup.html")
 
         if pass1 != pass2:
-            messages.error(request, "Passwords didn't matched!!")
+            messages.error(request, "Passwörter stimmen nicht überein!!")
             return render(request, "authentication/signup.html")
 
         if not username.isalnum():
-            messages.error(request, "Username must be Alpha-Numeric!!")
+            messages.error(request, "Der Benutzername muss alphanumerisch sein!!")
             return render(request, "authentication/signup.html")
 
         myuser = User.objects.create_user(username, email, pass1)
