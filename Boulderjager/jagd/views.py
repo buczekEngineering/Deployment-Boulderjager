@@ -10,12 +10,44 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 
 from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse
 
+import csv
 logger = logging.getLogger(__name__)
 
 
 def home(request):
     return render(request, "home.html")
+
+def export_rankings_to_csv(request):
+    modes = ["u18", "bj", "ue50"]
+    genders = ["man", "woman"]
+
+    rankings_data = []
+    for mode in modes:
+        for gender in genders:
+            category = f"{mode}_{gender}"
+            data = get_sorted_boulder_data_based_on(category)
+            for idx, entry_data in enumerate(data, start=1):
+                user = entry_data.user
+                rankings_data.append({
+                    'category': category.replace('_', ' ').title(),
+                    'idx': idx,
+                    'user_name': f"{user.first_name} {user.last_name}",
+                    'points': entry_data.points
+                })
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="rankings.csv"'
+
+    fieldnames = ['category', 'idx', 'user_name', 'points']
+    writer = csv.DictWriter(response, fieldnames=fieldnames)
+    writer.writeheader()
+
+    for row in rankings_data:
+        writer.writerow(row)
+
+    return response
 
 
 def ranking_view(request):
