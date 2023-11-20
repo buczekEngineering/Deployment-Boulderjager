@@ -44,26 +44,45 @@
         font-size: 16px;
     }
     </style>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap-theme.min.css">
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <h2>Boulder eintragen</h2>
             <h3>Jäger/in: {{ username }}</h3>
 
 <form class="form-container" method="post" action="{% url 'jagd:add_boulders_view' %}">
     {% csrf_token %}
+    <div class="row">
     {% for field in form %}
         {% if 'boulder_' in field.name %}
-            {{ field.label_tag }} {{ field }}
+            <div class="col-md-6 mb-3">
+                            <label>{{ field.label_tag }}</label>
+                            {{ field }}
+                        </div>
         {% endif %}
     {% endfor %}
-     <input type="submit" value="Boulder hinzufügen!" class="submit-button">
-</form>
-
-
-       <p><a href="{% url 'jagd:ranking_view' %}" class="button">Das Ranking</a></p>
-    <p><a href="{% url 'jagd:view_boulder' %}" class="button" >Ihr Ergebnis anzeigen</a></p>
-     <p><a href="{% url 'jagd:home' %}" class="button" >Startseite</a></p>
-        <br/>
-        <br/>
-         <div class="logged-user" style="margin-top: 20px; font-size: 16px;">
-
     </div>
+ <div class="text-center">
+     <input type="submit" value="Boulder hinzufügen!" class="btn btn-primary">
+ </div>
+</form>
+  <div class="position-fixed" style="top: 10px; right: 10px;">
+        <p><a href="{% url 'jagd:ranking_view' %}" class="button">Das Ranking</a></p>
+        <p><a href="{% url 'jagd:view_boulder' %}" class="button">Ihr Ergebnis anzeigen</a></p>
+        <p><a href="{% url 'jagd:home' %}" class="button">Startseite</a></p>
+
+   <div class="logged-user text-center mt-4">
+        <h3> Jäger/in: {{ username }}</h3>
+      </div>
+    </div>
+
 {% endblock %}

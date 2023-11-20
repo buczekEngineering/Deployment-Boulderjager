@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     {% for message in messages %}
     <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
         <strong>Message:</strong> {{ message }}
@@ -16,26 +17,16 @@
         {% csrf_token %}
         <div class="form-group">
             <label for="username">Benutzername</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Enter Your Username" Required>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Gib deine Benutzername ein" Required>
         </div>
         <div class="form-group">
             <label for="pass1">Passwort</label>
-            <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Enter Your Password" Required>
+            <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Gib dein Passwort ein" Required>
         </div>
 
         <input type="submit" value="Einloggen" class="submit-button">
     </form>
      </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-     </br>
-    </br>
-    </br>
-    </br>
-    </br>
     </br>
         <p><a href="{% url 'jagd:ranking_view' %}" class="button">Das Ranking</a></p>
      <p><a href="{% url 'jagd:home' %}" class="button" >Startseite</a></p>
