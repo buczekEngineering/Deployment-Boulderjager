@@ -123,4 +123,4 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_TRUSTED_ORIGINS = ['http://18.192.61.13']
+CSRF_TRUSTED_ORIGINS = ['http://18.192.215.33']
