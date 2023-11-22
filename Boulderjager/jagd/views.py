@@ -144,7 +144,7 @@ def signup(request):
         username = request.POST['username']
         fname = request.POST['fname']
         lname = request.POST['lname']
-        email = request.POST['email']
+        #email = request.POST['email']
         pass1 = request.POST['pass1']
         pass2 = request.POST['pass2']
 
@@ -157,9 +157,9 @@ def signup(request):
             messages.error(request, "Der Benutzername muss weniger als 20 Zeichen lang sein!!")
             return render(request, "authentication/signup.html")
 
-        if User.objects.filter(email=email).exists():
-            messages.error(request, "E-Mail Bereits registriert!!")
-            return render(request, "authentication/signup.html")
+        #if User.objects.filter(email=email).exists():
+        #    messages.error(request, "E-Mail Bereits registriert!!")
+        #    return render(request, "authentication/signup.html")
 
         if pass1 != pass2:
             messages.error(request, "Passwörter stimmen nicht überein!!")
@@ -169,7 +169,7 @@ def signup(request):
             messages.error(request, "Der Benutzername muss alphanumerisch sein!!")
             return render(request, "authentication/signup.html")
 
-        myuser = User.objects.create_user(username, email, pass1)
+        myuser = User.objects.create_user(username, "", pass1)
         myuser.first_name = fname
         myuser.last_name = lname
         myuser.is_active = True
