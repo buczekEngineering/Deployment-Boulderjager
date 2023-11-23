@@ -104,7 +104,7 @@ class AddBoulderFormUE50W(forms.ModelForm):
 class AddBoulderFormBJM(forms.ModelForm):
     class Meta:
         model = BJM
-        fields = [f'boulder_{i}' for i in range(5, 31)]
+        fields = [f'boulder_{i}' for i in range(1, 26)]
 
     def __init__(self, *args, **kwargs):
 
@@ -127,7 +127,7 @@ class AddBoulderFormBJM(forms.ModelForm):
 class AddBoulderFormBJW(forms.ModelForm):
     class Meta:
         model = BJW
-        fields = [f'boulder_{i}' for i in range(3, 29)]
+        fields = [f'boulder_{i}' for i in range(1, 26)]
 
     def __init__(self, *args, **kwargs):
 
