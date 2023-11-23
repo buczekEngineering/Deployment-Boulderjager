@@ -116,7 +116,7 @@ class AddBoulderFormBJM(forms.ModelForm):
 
         super(AddBoulderFormBJM, self).__init__(*args, **kwargs)
 
-        for i in range(5, 31):
+        for i in range(1, 26):
             field_name = f'boulder_{i}'
             self.fields[field_name] = forms.ChoiceField(
                 choices=CHOICES,
@@ -139,7 +139,7 @@ class AddBoulderFormBJW(forms.ModelForm):
 
         super(AddBoulderFormBJW, self).__init__(*args, **kwargs)
 
-        for i in range(3, 29):
+        for i in range(1, 26):
             field_name = f'boulder_{i}'
             self.fields[field_name] = forms.ChoiceField(
                 choices=CHOICES,
