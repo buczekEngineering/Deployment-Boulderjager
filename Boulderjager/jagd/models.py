@@ -20,6 +20,8 @@ class UserProfile(models.Model):
 
 class BJW(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    boulder_1 = models.CharField(max_length=100, default="None")
+    boulder_2 = models.CharField(max_length=100, default="None")
     boulder_3 = models.CharField(max_length=100, default="None")
     boulder_4 = models.CharField(max_length=100, default="None")
     boulder_5 = models.CharField(max_length=100, default="None")
@@ -43,14 +45,10 @@ class BJW(models.Model):
     boulder_23 = models.CharField(max_length=100, default="None")
     boulder_24 = models.CharField(max_length=100, default="None")
     boulder_25 = models.CharField(max_length=100, default="None")
-    boulder_26 = models.CharField(max_length=100, default="None")
-    boulder_27 = models.CharField(max_length=100, default="None")
-    boulder_28 = models.CharField(max_length=100, default="None")
 
     date = models.DateField(auto_now_add=True)
     time = models.TimeField(auto_now_add=True)
     points = models.IntegerField(default=0)
-
     tops_amount = models.IntegerField(default=0)
     bonus_amount = models.IntegerField(default=0)
 
@@ -71,34 +69,36 @@ class BJW(models.Model):
 
         # Calculate points for each boulder and sum them up
         points = sum(boulder2points_mapping.get(boulder, 0) for boulder in
-                     [self.boulder_3, self.boulder_4, self.boulder_5, self.boulder_6, self.boulder_7, self.boulder_8,
-                      self.boulder_9, self.boulder_10, self.boulder_11, self.boulder_12, self.boulder_13,
-                      self.boulder_14, self.boulder_15, self.boulder_16, self.boulder_17, self.boulder_18,
-                      self.boulder_19, self.boulder_20, self.boulder_21, self.boulder_22, self.boulder_23,
-                      self.boulder_24, self.boulder_25, self.boulder_26, self.boulder_27, self.boulder_28])
+                     [self.boulder_1, self.boulder_2, self.boulder_3, self.boulder_4, self.boulder_5, self.boulder_6,
+                      self.boulder_7, self.boulder_8, self.boulder_9, self.boulder_10, self.boulder_11, self.boulder_12,
+                      self.boulder_13, self.boulder_14, self.boulder_15, self.boulder_16, self.boulder_17,
+                      self.boulder_18, self.boulder_19, self.boulder_20, self.boulder_21, self.boulder_22,
+                      self.boulder_23, self.boulder_24, self.boulder_25])
 
         return points
 
     def calculate_tops_and_bonuses(self):
         tops = sum(1 for boulder in
-                   [self.boulder_3, self.boulder_4, self.boulder_5, self.boulder_6, self.boulder_7, self.boulder_8, self.boulder_9, self.boulder_10,
-                    self.boulder_11, self.boulder_12, self.boulder_13, self.boulder_14, self.boulder_15,
-                    self.boulder_16, self.boulder_17, self.boulder_18, self.boulder_19, self.boulder_20,
-                    self.boulder_21, self.boulder_22, self.boulder_23, self.boulder_24, self.boulder_25,
-                    self.boulder_26, self.boulder_27, self.boulder_28] if
-                   boulder == 'Top')
+                   [self.boulder_1, self.boulder_2, self.boulder_3, self.boulder_4, self.boulder_5, self.boulder_6,
+                    self.boulder_7, self.boulder_8, self.boulder_9, self.boulder_10, self.boulder_11, self.boulder_12,
+                    self.boulder_13, self.boulder_14, self.boulder_15, self.boulder_16, self.boulder_17,
+                    self.boulder_18, self.boulder_19, self.boulder_20, self.boulder_21, self.boulder_22,
+                    self.boulder_23, self.boulder_24, self.boulder_25] if boulder == 'Top')
         bonuses = sum(1 for boulder in
-                      [self.boulder_3, self.boulder_4, self.boulder_5, self.boulder_6, self.boulder_7, self.boulder_8, self.boulder_9, self.boulder_10,
-                       self.boulder_11, self.boulder_12, self.boulder_13, self.boulder_14, self.boulder_15,
-                       self.boulder_16, self.boulder_17, self.boulder_18, self.boulder_19, self.boulder_20,
-                       self.boulder_21, self.boulder_22, self.boulder_23, self.boulder_24, self.boulder_25,
-                       self.boulder_26, self.boulder_27, self.boulder_28] if
-                      boulder == 'Bonus')
+                      [self.boulder_1, self.boulder_2, self.boulder_3, self.boulder_4, self.boulder_5, self.boulder_6,
+                       self.boulder_7, self.boulder_8, self.boulder_9, self.boulder_10, self.boulder_11,
+                       self.boulder_12, self.boulder_13, self.boulder_14, self.boulder_15, self.boulder_16,
+                       self.boulder_17, self.boulder_18, self.boulder_19, self.boulder_20, self.boulder_21,
+                       self.boulder_22, self.boulder_23, self.boulder_24, self.boulder_25] if boulder == 'Bonus')
         return tops, bonuses
 
 
 class BJM(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    boulder_1 = models.CharField(max_length=100, default="None")
+    boulder_2 = models.CharField(max_length=100, default="None")
+    boulder_3 = models.CharField(max_length=100, default="None")
+    boulder_4 = models.CharField(max_length=100, default="None")
     boulder_5 = models.CharField(max_length=100, default="None")
     boulder_6 = models.CharField(max_length=100, default="None")
     boulder_7 = models.CharField(max_length=100, default="None")
@@ -120,11 +120,6 @@ class BJM(models.Model):
     boulder_23 = models.CharField(max_length=100, default="None")
     boulder_24 = models.CharField(max_length=100, default="None")
     boulder_25 = models.CharField(max_length=100, default="None")
-    boulder_26 = models.CharField(max_length=100, default="None")
-    boulder_27 = models.CharField(max_length=100, default="None")
-    boulder_28 = models.CharField(max_length=100, default="None")
-    boulder_29 = models.CharField(max_length=100, default="None")
-    boulder_30 = models.CharField(max_length=100, default="None")
 
     date = models.DateField(auto_now_add=True)
     time = models.TimeField(auto_now_add=True)
@@ -146,30 +141,29 @@ class BJM(models.Model):
     def calculate_points(self):
         boulder2points_mapping = {"None": 0, "Bonus": 1, "Top": 2}
 
+        # Calculate points for each boulder and sum them up
         points = sum(boulder2points_mapping.get(boulder, 0) for boulder in
-                     [self.boulder_5, self.boulder_6, self.boulder_7, self.boulder_8, self.boulder_9, self.boulder_10,
-                      self.boulder_11, self.boulder_12, self.boulder_13, self.boulder_14, self.boulder_15,
-                      self.boulder_16, self.boulder_17, self.boulder_18, self.boulder_19, self.boulder_20,
-                      self.boulder_21, self.boulder_22, self.boulder_23, self.boulder_24, self.boulder_25,
-                      self.boulder_26, self.boulder_27, self.boulder_28, self.boulder_29, self.boulder_30])
+                     [self.boulder_1, self.boulder_2, self.boulder_3, self.boulder_4, self.boulder_5, self.boulder_6,
+                      self.boulder_7, self.boulder_8, self.boulder_9, self.boulder_10, self.boulder_11, self.boulder_12,
+                      self.boulder_13, self.boulder_14, self.boulder_15, self.boulder_16, self.boulder_17,
+                      self.boulder_18, self.boulder_19, self.boulder_20, self.boulder_21, self.boulder_22,
+                      self.boulder_23, self.boulder_24, self.boulder_25])
 
         return points
 
     def calculate_tops_and_bonuses(self):
         tops = sum(1 for boulder in
-                   [self.boulder_5, self.boulder_6, self.boulder_7, self.boulder_8, self.boulder_9, self.boulder_10,
-                    self.boulder_11, self.boulder_12, self.boulder_13, self.boulder_14, self.boulder_15,
-                    self.boulder_16, self.boulder_17, self.boulder_18, self.boulder_19, self.boulder_20,
-                    self.boulder_21, self.boulder_22, self.boulder_23, self.boulder_24, self.boulder_25,
-                    self.boulder_26, self.boulder_27, self.boulder_28, self.boulder_29, self.boulder_30] if
-                   boulder == 'Top')
+                   [self.boulder_1, self.boulder_2, self.boulder_3, self.boulder_4, self.boulder_5, self.boulder_6,
+                    self.boulder_7, self.boulder_8, self.boulder_9, self.boulder_10, self.boulder_11, self.boulder_12,
+                    self.boulder_13, self.boulder_14, self.boulder_15, self.boulder_16, self.boulder_17,
+                    self.boulder_18, self.boulder_19, self.boulder_20, self.boulder_21, self.boulder_22,
+                    self.boulder_23, self.boulder_24, self.boulder_25] if boulder == 'Top')
         bonuses = sum(1 for boulder in
-                      [self.boulder_5, self.boulder_6, self.boulder_7, self.boulder_8, self.boulder_9, self.boulder_10,
-                       self.boulder_11, self.boulder_12, self.boulder_13, self.boulder_14, self.boulder_15,
-                       self.boulder_16, self.boulder_17, self.boulder_18, self.boulder_19, self.boulder_20,
-                       self.boulder_21, self.boulder_22, self.boulder_23, self.boulder_24, self.boulder_25,
-                       self.boulder_26, self.boulder_27, self.boulder_28, self.boulder_29, self.boulder_30] if
-                      boulder == 'Bonus')
+                      [self.boulder_1, self.boulder_2, self.boulder_3, self.boulder_4, self.boulder_5, self.boulder_6,
+                       self.boulder_7, self.boulder_8, self.boulder_9, self.boulder_10, self.boulder_11,
+                       self.boulder_12, self.boulder_13, self.boulder_14, self.boulder_15, self.boulder_16,
+                       self.boulder_17, self.boulder_18, self.boulder_19, self.boulder_20, self.boulder_21,
+                       self.boulder_22, self.boulder_23, self.boulder_24, self.boulder_25] if boulder == 'Bonus')
         return tops, bonuses
 
 
