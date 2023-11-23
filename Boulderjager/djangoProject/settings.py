@@ -125,4 +125,4 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_TRUSTED_ORIGINS = ['http://18.192.215.33']
+CSRF_TRUSTED_ORIGINS = ['http://18.192.215.33', 'http://boulderjaeger.boulderhalle-siegen.de', 'https://boulderjaeger.boulderhalle-siegen.de', 'https://18.192.215.33']
