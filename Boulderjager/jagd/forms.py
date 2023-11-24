@@ -15,7 +15,7 @@ class AddBoulderFormU18M(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         CHOICES = [
-            ('None', 'None'),
+            ('-', '-'),
             ('Bonus', 'Bonus'),
             ('Top', 'Top'),
         ]
@@ -27,7 +27,7 @@ class AddBoulderFormU18M(forms.ModelForm):
             field_name = f'boulder_{i}'
             self.fields[field_name] = forms.ChoiceField(
                 choices=CHOICES,
-                initial='None',
+                initial='-',
                 widget=forms.Select(attrs={'class': 'form-control'})
             )
 
@@ -38,7 +38,7 @@ class AddBoulderFormU18W(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         CHOICES = [
-            ('None', 'None'),
+            ('-', '-'),
             ('Bonus', 'Bonus'),
             ('Top', 'Top'),
         ]
@@ -50,7 +50,7 @@ class AddBoulderFormU18W(forms.ModelForm):
             field_name = f'boulder_{i}'
             self.fields[field_name] = forms.ChoiceField(
                 choices=CHOICES,
-                initial='None',
+                initial='-',
                 widget=forms.Select(attrs={'class': 'form-control'})
             )
 
@@ -63,7 +63,7 @@ class AddBoulderFormUE50M(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         CHOICES = [
-            ('None', 'None'),
+            ('-', '-'),
             ('Bonus', 'Bonus'),
             ('Top', 'Top'),
         ]
@@ -75,7 +75,7 @@ class AddBoulderFormUE50M(forms.ModelForm):
             field_name = f'boulder_{i}'
             self.fields[field_name] = forms.ChoiceField(
                 choices=CHOICES,
-                initial='None',
+                initial='-',
                 widget=forms.Select(attrs={'class': 'form-control'})
             )
 
@@ -86,7 +86,7 @@ class AddBoulderFormUE50W(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         CHOICES = [
-            ('None', 'None'),
+            ('-', '-'),
             ('Bonus', 'Bonus'),
             ('Top', 'Top'),
         ]
@@ -98,7 +98,7 @@ class AddBoulderFormUE50W(forms.ModelForm):
             field_name = f'boulder_{i}'
             self.fields[field_name] = forms.ChoiceField(
                 choices=CHOICES,
-                initial='None',
+                initial='-',
                 widget=forms.Select(attrs={'class': 'form-control'})
             )
 class AddBoulderFormBJM(forms.ModelForm):
@@ -109,7 +109,7 @@ class AddBoulderFormBJM(forms.ModelForm):
     def __init__(self, *args, **kwargs):
 
         CHOICES = [
-            ('None', 'None'),
+            ('-', '-'),
             ('Bonus', 'Bonus'),
             ('Top', 'Top'),
         ]
@@ -120,7 +120,7 @@ class AddBoulderFormBJM(forms.ModelForm):
             field_name = f'boulder_{i}'
             self.fields[field_name] = forms.ChoiceField(
                 choices=CHOICES,
-                initial='None',
+                initial='-',
                 widget=forms.Select(attrs={'class': 'form-control'})
             )
 
@@ -132,7 +132,7 @@ class AddBoulderFormBJW(forms.ModelForm):
     def __init__(self, *args, **kwargs):
 
         CHOICES = [
-            ('None', 'None'),
+            ('-', '-'),
             ('Bonus', 'Bonus'),
             ('Top', 'Top'),
         ]
@@ -143,6 +143,6 @@ class AddBoulderFormBJW(forms.ModelForm):
             field_name = f'boulder_{i}'
             self.fields[field_name] = forms.ChoiceField(
                 choices=CHOICES,
-                initial='None',
+                initial='-',
                 widget=forms.Select(attrs={'class': 'form-control'})
             )

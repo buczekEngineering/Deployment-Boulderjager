@@ -22,7 +22,7 @@
   {% endif %}
     <ul style="list-style: none; padding: 0;">
     {% for entry in entry %}
-        <li style="font-family: 'Josefin Sans', sans-serif; border-bottom: 1px solid #ccc; padding: 5px 0;">
+        <li style="font-family: 'Josefin Sans', sans-serif; border-bottom: 2px solid #ccc; padding: 5px 0;">
       {{ forloop.counter }}. {{ entry.user.first_name }} {{ entry.user.last_name }}                 Gesamt: {{ entry.points }}
         </li>
 
