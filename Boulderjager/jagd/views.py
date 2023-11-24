@@ -1,7 +1,7 @@
 from .forms import AddBoulderFormBJM, AddBoulderFormBJW, AddBoulderFormUE50M, AddBoulderFormU18M, \
     AddBoulderFormU18W, AddBoulderFormUE50W
 from .boulders_controller import get_sorted_boulder_data_based_on, get_existing_boulder_data, \
-    retrieve_boulders_based_on_, retrieve_tops_amount, retrieve_zones_amount
+    retrieve_boulders_based_on_, retrieve_tops_amount, retrieve_zones_amount, category2boulder_model__mapping
 from django.contrib.auth.decorators import login_required
 import logging
 from .models import UserProfile, U18W, U18M, UE50W, UE50M, BJM, BJW
@@ -18,6 +18,48 @@ logger = logging.getLogger(__name__)
 
 def home(request):
     return render(request, "home.html")
+
+
+def export_combined_data_to_csv(request):
+    users_profiles = UserProfile.objects.all()
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="combined_data.csv"'
+
+    fieldnames = ['user', 'category','points']
+    boulder_fieldnames = [f'boulder_{i}' for i in range(1, 31)]  # List of boulder field names
+
+    # Combine all field names
+    all_fieldnames = fieldnames + boulder_fieldnames
+
+    writer = csv.DictWriter(response, fieldnames=all_fieldnames)
+    writer.writeheader()  # Write all_fieldnames as headers in the CSV
+
+    for profile in users_profiles:
+        category = f"{profile.mode}_{profile.gender}"
+        model_name = category2boulder_model__mapping(category)
+
+        if model_name:
+            user_data = model_name.objects.filter(user=profile.user).first()
+
+            if user_data:
+
+                user = user_data.user
+                user_values = {
+                    'user': user.first_name + ' ' + user.last_name,
+                    'category': category.replace('_', ' ').title(),
+                    'points': user_data.points,
+
+                }
+
+                for i in range(1, 31):
+                    boulder_field = f'boulder_{i}'
+                    boulder_value = getattr(user_data, boulder_field)
+                    user_values[boulder_field] = boulder_value
+
+                writer.writerow(user_values)
+
+    return response
 
 def export_rankings_to_csv(request):
     modes = ["u18", "bj", "ue50"]

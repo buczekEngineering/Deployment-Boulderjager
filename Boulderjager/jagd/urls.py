@@ -14,4 +14,5 @@ urlpatterns = [
     path('signin', views.signin, name='signin'),
     path('signout', views.signout, name='signout'),
     path('export-csv/', views.export_rankings_to_csv, name='export_csv'),
+    path('export-ranking-detail/', views.export_combined_data_to_csv, name='export_combined_data_to_csv')
 ]
