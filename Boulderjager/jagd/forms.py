@@ -11,7 +11,7 @@ class LoginForm(forms.Form):
 class AddBoulderFormU18M(forms.ModelForm):
     class Meta:
         model = U18M
-        fields = [f'boulder_{i}' for i in range(1, 26)]
+        fields = [f'boulder_{i}' for i in range(1, 31)]
 
     def __init__(self, *args, **kwargs):
         CHOICES = [
@@ -23,7 +23,7 @@ class AddBoulderFormU18M(forms.ModelForm):
         super(AddBoulderFormU18M, self).__init__(*args, **kwargs)
 
 
-        for i in range(1, 26):
+        for i in range(1, 31):
             field_name = f'boulder_{i}'
             self.fields[field_name] = forms.ChoiceField(
                 choices=CHOICES,
@@ -34,7 +34,7 @@ class AddBoulderFormU18M(forms.ModelForm):
 class AddBoulderFormU18W(forms.ModelForm):
     class Meta:
         model = U18W
-        fields = [f'boulder_{i}' for i in range(1, 26)]
+        fields = [f'boulder_{i}' for i in range(1, 31)]
 
     def __init__(self, *args, **kwargs):
         CHOICES = [
@@ -46,7 +46,7 @@ class AddBoulderFormU18W(forms.ModelForm):
         super(AddBoulderFormU18W, self).__init__(*args, **kwargs)
 
 
-        for i in range(1, 26):
+        for i in range(1, 31):
             field_name = f'boulder_{i}'
             self.fields[field_name] = forms.ChoiceField(
                 choices=CHOICES,
@@ -59,7 +59,7 @@ class AddBoulderFormU18W(forms.ModelForm):
 class AddBoulderFormUE50M(forms.ModelForm):
     class Meta:
         model = UE50M
-        fields = [f'boulder_{i}' for i in range(1, 26)]
+        fields = [f'boulder_{i}' for i in range(1, 31)]
 
     def __init__(self, *args, **kwargs):
         CHOICES = [
@@ -71,7 +71,7 @@ class AddBoulderFormUE50M(forms.ModelForm):
         super(AddBoulderFormUE50M, self).__init__(*args, **kwargs)
 
 
-        for i in range(1, 26):
+        for i in range(1, 31):
             field_name = f'boulder_{i}'
             self.fields[field_name] = forms.ChoiceField(
                 choices=CHOICES,
@@ -82,7 +82,7 @@ class AddBoulderFormUE50M(forms.ModelForm):
 class AddBoulderFormUE50W(forms.ModelForm):
     class Meta:
         model = UE50W
-        fields = [f'boulder_{i}' for i in range(1, 26)]
+        fields = [f'boulder_{i}' for i in range(1, 31)]
 
     def __init__(self, *args, **kwargs):
         CHOICES = [
@@ -94,7 +94,7 @@ class AddBoulderFormUE50W(forms.ModelForm):
         super(AddBoulderFormUE50W, self).__init__(*args, **kwargs)
 
 
-        for i in range(1, 26):
+        for i in range(1, 31):
             field_name = f'boulder_{i}'
             self.fields[field_name] = forms.ChoiceField(
                 choices=CHOICES,
@@ -104,7 +104,7 @@ class AddBoulderFormUE50W(forms.ModelForm):
 class AddBoulderFormBJM(forms.ModelForm):
     class Meta:
         model = BJM
-        fields = [f'boulder_{i}' for i in range(1, 26)]
+        fields = [f'boulder_{i}' for i in range(1, 31)]
 
     def __init__(self, *args, **kwargs):
 
@@ -116,7 +116,7 @@ class AddBoulderFormBJM(forms.ModelForm):
 
         super(AddBoulderFormBJM, self).__init__(*args, **kwargs)
 
-        for i in range(1, 26):
+        for i in range(1, 31):
             field_name = f'boulder_{i}'
             self.fields[field_name] = forms.ChoiceField(
                 choices=CHOICES,
@@ -127,7 +127,7 @@ class AddBoulderFormBJM(forms.ModelForm):
 class AddBoulderFormBJW(forms.ModelForm):
     class Meta:
         model = BJW
-        fields = [f'boulder_{i}' for i in range(1, 26)]
+        fields = [f'boulder_{i}' for i in range(1, 31)]
 
     def __init__(self, *args, **kwargs):
 
@@ -139,7 +139,7 @@ class AddBoulderFormBJW(forms.ModelForm):
 
         super(AddBoulderFormBJW, self).__init__(*args, **kwargs)
 
-        for i in range(1, 26):
+        for i in range(1, 31):
             field_name = f'boulder_{i}'
             self.fields[field_name] = forms.ChoiceField(
                 choices=CHOICES,
