@@ -4,7 +4,7 @@ services:
   django_gunicorn:
     volumes:
       - static:/static
-      - db_volume:/app/db_data
+      - ./Boulderjager:/app/
     env_file:
       - .env
     build:
